@@ -12,10 +12,17 @@ app.get("/", (req: Request, res: Response) => {
 
 app.post("/echo", (req: Request, res: Response) => {
     const data = req.body;
-    res.json({
-        message : "data received successfully",
-        data: data
-    });
+    if(!data) {
+        res.json({
+            message : "data not received",
+        })
+    }
+    else {
+        res.json({
+            message : "data received successfully",
+            data: data
+        });
+    }
 });
 
 app.listen(PORT, ()=>{
